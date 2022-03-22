@@ -1,8 +1,9 @@
 const dropBtn = document.querySelector(".dropbtn");
 const dropContent = document.querySelector(".dropdown-content");
+const regionF = dropContent.querySelectorAll("a");
 const countriesContainer = document.querySelector(".countries");
-
-dropBtn.addEventListener("click", function () {});
+const countryData = document.querySelector(".country");
+const input = document.querySelector("#search");
 
 window.addEventListener("click", function (e) {
   if (dropBtn.contains(e.target)) {
@@ -12,36 +13,61 @@ window.addEventListener("click", function (e) {
   }
 });
 
-const renderCountry = function (datas) {
-  datas.forEach(function (data) {
-    const html = `
-      <article class="country">
-      <img
-        class="country__img"
-        src="${data.flag}"
-      />
-      <div class="country__data">
-        <h3 class="country__name">${data.name}</h3>
-        <p class="country__row"><span>Population: ${data.population}</span></p>
-        <p class="country__row"><span>Region: ${data.region}</span></p>
-        <p class="country__row"><span>Capital: ${data.capital}</span></p>
-      </div>
-    </article>`;
-    countriesContainer.insertAdjacentHTML("beforebegin", html);
+async function getCountries() {
+  try {
+    const res = await fetch("https://restcountries.com/v2/all");
+    const countries = await res.json();
+    displayCountries(countries);
+  } catch (err) {
+    console.log(err);
+  }
+}
+getCountries();
+
+function displayCountries(countries) {
+  countriesContainer.innerHTML = "";
+
+  countries.forEach((country) => {
+    const countryEL = document.createElement("div");
+    countryEL.classList.add("country");
+    countryEL.innerHTML = `
+            <img class="country__img" src="${country.flag}" />
+            <div class="country__data">
+              <h3 class="country__name">${country.name}</h3>
+              <p class="country__row"><span>Population: </span>${country.population}</p>
+              <p class="country__row region"><span>Region: </span>${country.region}</p>
+              <p class="country__row"><span>Capital: </span>${country.capital}</p>
+            </div>
+    `;
+
+    countriesContainer.appendChild(countryEL);
   });
-};
+}
 
-const getJSON = function (url, errorMsg = "Something went wrong") {
-  return fetch(url).then((response) => {
-    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+input.addEventListener("input", function (e) {
+  const value = e.target.value;
+  const countryName = document.querySelectorAll(".country__name");
 
-    return response.json();
+  countryName.forEach((el) => {
+    if (el.innerText.toLowerCase().includes(value.toLowerCase())) {
+      el.parentElement.parentElement.style.display = "block";
+    } else {
+      el.parentElement.parentElement.style.display = "none";
+    }
   });
-};
+});
 
-const getCountryData = function () {
-  getJSON("https://restcountries.com/v2/all")
-    .then((data) => renderCountry(data))
-    .catch((err) => console.log(err));
-};
-getCountryData();
+regionF.forEach((f) => {
+  f.addEventListener("click", function () {
+    const value = f.innerText;
+    const region = document.querySelectorAll(".region");
+
+    region.forEach((r) => {
+      if (r.innerText.includes(value) || value === "All") {
+        r.parentElement.parentElement.style.display = "block";
+      } else {
+        r.parentElement.parentElement.style.display = "none";
+      }
+    });
+  });
+});
