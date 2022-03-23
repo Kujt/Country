@@ -1,3 +1,9 @@
+
+![desktop-design-home-light](https://user-images.githubusercontent.com/36826448/159699022-2f8a4ecc-8aa5-4697-874d-1516f9366fba.jpg)
+
+
+
+
 # Country
 REST Countries API with color theme switcher challenge hub
 Your challenge is to integrate with the REST Countries V2 API to pull country data and display it like in the designs.
