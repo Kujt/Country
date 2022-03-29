@@ -6,6 +6,8 @@
 
 # Country Challenge
 
+Link deployed in netlify: https://countryrestapi2.netlify.app/
+
 I took this challenge from https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca
 
 REST Countries API with color theme switcher challenge hub
