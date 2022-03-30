@@ -59,8 +59,8 @@ body {
 }
 
 .container {
+  max-width: 75%;
   margin: 0 auto;
-  max-width: 69%;
 }
 
 /* ***************** */
@@ -153,15 +153,18 @@ body {
   border-radius: 0.4rem;
 }
 
-.dropdown-content a {
+.dropdown-content li {
   color: black;
   font-size: 1.6rem;
   padding: 1rem;
   text-decoration: none;
   display: block;
   margin-left: 1rem;
+  cursor: pointer;
 }
-
+.dropdown-content li:hover {
+  color: #888;
+}
 .show {
   display: block;
 }
@@ -171,15 +174,13 @@ body {
 /* ****************** */
 
 .row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-  grid-column-gap: 6rem;
-  grid-row-gap: 7.4rem;
-  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .country {
-  width: 28rem;
+  width: 29rem;
+  margin: 2rem auto;
   height: 42rem;
   background-color: #fff;
 
@@ -192,8 +193,8 @@ body {
   transform: translateY(-1rem);
 }
 .country__img {
-  width: 28rem;
-  height: 20rem;
+  width: 100%;
+  height: 19.5rem;
 }
 .country__data {
   margin-left: 2rem;
@@ -282,6 +283,11 @@ input {
 /*One Country */
 /* ****************** */
 
+.details {
+  margin-top: 20rem;
+  display: flex;
+  gap: 0 6rem;
+}
 .country-detail {
   margin-bottom: 5rem;
 }
@@ -298,13 +304,6 @@ input {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   border-radius: 0.5rem;
   padding: 1.6rem 3.6rem;
-}
-
-.details {
-  margin-top: 20rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 0 6rem;
 }
 
 .details__flag img {
@@ -354,4 +353,50 @@ input {
 
 .modal {
   display: none;
+}
+
+/* ***************** */
+/*Media query */
+/* ****************** */
+
+@media (max-width: 1300px) {
+  .details__flag img {
+    max-width: 40rem;
+  }
+  .details {
+    gap: 0 3rem;
+  }
+}
+@media (max-width: 1050px) {
+  .details__flag img {
+    max-width: 100%;
+  }
+  .details {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .search {
+    flex-direction: column;
+    height: 12rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .details__about {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .details__about--title {
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 52.5%;
+  }
 }

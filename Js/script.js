@@ -1,6 +1,6 @@
 const dropBtn = document.querySelector(".dropbtn");
 const dropContent = document.querySelector(".dropdown-content");
-const regionF = dropContent.querySelectorAll("a");
+const regionF = dropContent.querySelectorAll("li");
 const countriesContainer = document.querySelector(".countries");
 const modal = document.querySelector(".country-detail");
 const modalBody = document.querySelector(".modal-body");
@@ -146,6 +146,6 @@ regionF.forEach((f) => {
 
 modalCloseBtn.addEventListener("click", function () {
   modal.style.display = "none";
-  countriesContainer.style.display = "grid";
+  countriesContainer.style.display = "flex";
   search.style.display = "flex";
 });
