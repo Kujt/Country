@@ -35,12 +35,16 @@ function displayCountries(countries) {
     const countryEL = document.createElement("div");
     countryEL.classList.add("country");
     countryEL.innerHTML = `
-            <img class="country__img" src="${country.flag}" />
+            
+            <img class="country__img" src="${country.flag}" alt="${country.name}" />
+          
             <div class="country__data">
               <h3 class="country__name">${country.name}</h3>
-              <p class="country__row"><span>Population: </span>${country.population}</p>
-              <p class="country__row region"><span>Region: </span>${country.region}</p>
-              <p class="country__row"><span>Capital: </span>${country.capital}</p>
+              <ul>
+              <li class="country__row"><span>Population: </span>${country.population}</li>
+              <li class="country__row region"><span>Region: </span>${country.region}</li>
+              <li class="country__row"><span>Capital: </span>${country.capital}</li>
+            </ul>
             </div>
     `;
 
@@ -68,46 +72,63 @@ function showCountryDetails(country) {
     <h2>${country.name}</h2>
   </div>
   <div class="details__about--left">
-    <p>
-      Native name:
-      <span class="details_about--native-name">${country.nativeName}</span>
-    </p>
-    <p>
-      Population:
-      <span class="details__about--population">${country.population}</span>
-    </p>
-    <p>
-      Region:
-      <span class="details__about--region">${country.region}</span>
-    </p>
-    <p>
-      Sub Region:
-      <span class="details__about--sub-region"> ${country.subregion}</span>
-    </p>
-    <p>
-      Capital:
-      <span class="details__about--capital"> ${country.capital}</span>
-    </p>
+  <ul>
+  <li>
+    Native name:
+    <span class="details_about--native-name"
+      >${country.nativeName}</span
+    >
+  </li>
+  <li>
+    Population:
+    <span class="details__about--population"
+      >${country.population}</span
+    >
+  </li>
+  <li>
+    Region:
+    <span class="details__about--region">${country.region}</span>
+  </li>
+  <li>
+    Sub Region:
+    <span class="details__about--sub-region">
+      ${country.subregion}</span
+    >
+  </li>
+  <li>
+   Sub Region:
+  <span class="details__about--sub-region">
+    ${country.subregion}</span
+  >
+  </li>
+  <li>
+    Capital:
+    <span class="details__about--capital"> ${country.capital}</span>
+  </li>
+  
+</ul>
   </div>
   <div class="details__about--right">
-    <p>
-      Top Level Domain:
-      <span class="details__about--top-domain"> ${
-        country.topLevelDomain[0]
-      }</span>
-    </p>
-    <p>
-      Currencies:
-      <span class="details__about--currencies">  ${country.currencies.map(
-        (currency) => currency.code
-      )}</span>
-    </p>
-    <p>
-      Languages:
-      <span class="details__about--languages">  ${country.languages.map(
-        (language) => language.name
-      )}</span>
-    </p>
+  <ul>
+  <li>
+    Top Level Domain:
+    <span class="details__about--top-domain">
+      ${country.topLevelDomain[0]}</span
+    >
+  </li>
+  <li>
+    Currencies:
+    <span class="details__about--currencies">
+      ${country.currencies.map((currency) => currency.code)}</span
+    >
+  </li>
+  <li>
+    Languages:
+    <span class="details__about--languages">
+      ${country.languages.map((language) => language.name)}</span
+    >
+  </li>
+</ul>
   </div>
   
 </div>
